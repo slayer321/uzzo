@@ -20,3 +20,4 @@ Opening in Visual Studio Code
 
 `uzo code --file demo.zip`
 
+Currently it supports other IDE's like sublime and atom
