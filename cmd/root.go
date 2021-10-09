@@ -16,9 +16,12 @@ limitations under the License.
 package cmd
 
 import (
+	"errors"
 	"fmt"
 	"os"
+	"path/filepath"
 
+	"github.com/slayer321/uzzo/util"
 	"github.com/spf13/cobra"
 
 	"github.com/spf13/viper"
@@ -33,9 +36,51 @@ var rootCmd = &cobra.Command{
 	Long:              `📂 uzzo will help you to directly unzip and open the directory in the specified IDE or text editior you want.`,
 	CompletionOptions: cobra.CompletionOptions{DisableDefaultCmd: true},
 	Version:           "1.0.0",
+
+	DisableFlagsInUseLine: true,
+	Args: func(cmd *cobra.Command, args []string) error {
+		if File != "" && len(args) < 1 {
+			return errors.New("accept(s) 1 argument")
+		} else if len(args) == 0 {
+			return errors.New("Enter the help flag -h or --help")
+		}
+		return nil
+	},
+	Example: `uzzo demo.zip`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
-	// Run: func(cmd *cobra.Command, args []string) { },
+	Run: func(cmd *cobra.Command, args []string) {
+		var filename string
+		var err error
+		var argument string
+
+		argument = args[0]
+
+		fileExists, err := util.FileExists(argument)
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+		// check if file exists or not
+		if fileExists {
+			filename, err = filepath.Abs(argument)
+			if err != nil {
+				fmt.Println(err.Error())
+			}
+
+		} else {
+			fmt.Printf("File %v does not exist \n", argument)
+			return
+		}
+
+		// get the working dir
+		wd, err := os.Getwd()
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+
+		// using Unzip function to Unzip the file
+		util.Unzip(filename, wd)
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

@@ -1,4 +1,4 @@
-module uzzo
+module github.com/slayer321/uzzo
 
 go 1.16
 

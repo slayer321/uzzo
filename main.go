@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "uzzo/cmd"
+import "github.com/slayer321/uzzo/cmd"
 
 func main() {
 	cmd.Execute()

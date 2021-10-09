@@ -23,7 +23,7 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"uzzo/util"
+	"github.com/slayer321/uzzo/util"
 
 	"github.com/spf13/cobra"
 )
@@ -40,6 +40,8 @@ var atomCmd = &cobra.Command{
 	Args: func(cmd *cobra.Command, args []string) error {
 		if File != "" && len(args) < 1 {
 			return errors.New("accept(s) 1 argument")
+		} else if len(args) == 0 {
+			return errors.New("Enter the help flag -h or --help")
 		}
 		return nil
 	},
