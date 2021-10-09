@@ -40,7 +40,7 @@ uzzo atom demo.zip
 
 Credit:
 
-This projects is made from the reference project by [shabbir](https://github.com/shabbirdwd53).
+[shabbir](https://github.com/shabbirdwd53) : Thank you for making awesome tutorial .
 
 ### :raised_hands: Contributing
 
