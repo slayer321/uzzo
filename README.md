@@ -2,22 +2,46 @@
 # uzzo
 
 uzzo (Unzip and Open) can be used to unzip the specified
-		   file into the folder and open that folder into the specified IDE or Text Editor
+		   file into the folder and open that folder into the specified IDE or Text Editor . You can also use it to just unzip the zip file then there is no need to specify the IDE command.
 
 ## Installation
 
 ```
-go get github.com/slayer321/uzzo
+go get github.com/slayer321/uzzo@latest
 ```
 
-## Demo
+## Usage
 
-Opening in Visual Studio Code
+- If you just want to unzip your zip file use this command
 
-`uzo code demo.zip`
+```
+uzzo demo.zip
+```
 
-`uzo code -f demo.zip`
+#### Unzip and open in IDE
 
-`uzo code --file demo.zip`
+Visual Studio Code
 
-Currently it supports other IDE's like sublime and atom
+```
+uzzo code demo.zip
+```
+Sublime Text Editor
+
+```
+uzzo subl demo.zip
+```
+Atom editor
+
+```
+uzzo atom demo.zip
+```
+
+---
+
+Credit:
+
+This projects is made from the reference project by [shabbir](https://github.com/shabbirdwd53).
+
+### :raised_hands: Contributing
+
+This is an open source project. Any contribution would be highly appreciated!
