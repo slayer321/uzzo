@@ -12,7 +12,7 @@ go get github.com/slayer321/uzzo@latest
 
 ## Usage
 
-- If you just want to unzip your zip file use this command
+- If you just want to unzip your zip file use this command.
 
 ```
 uzzo demo.zip
