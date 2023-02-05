@@ -12,10 +12,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ github.ref_name }}
-      - name: Anchore SBOM Action
-        uses: anchore/sbom-action@v0.12.0
-        with:
-          format: cyclonedx-json
+      # - name: Anchore SBOM Action
+      #   uses: anchore/sbom-action@v0.12.0
+      #   with:
+      #     format: cyclonedx-json
       - name: Install Bom
         shell: bash
         run: |
@@ -36,5 +36,4 @@ jobs:
       - name: Upload the SBOM artifacets
         uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
           path: ./sbom_kubearmor.spdx
