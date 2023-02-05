@@ -32,8 +32,13 @@ jobs:
         shell: bash
         run: |
           ls -al 
+          echo ${{ github.ref_name }}
     
-      - name: Upload the SBOM artifacets
-        uses: actions/upload-artifact@v3
-        with:
-          path: ./sbom_kubearmor.spdx
+      # - name: Upload the SBOM artifacets
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     path: ./sbom_kubearmor.spdx
+      - name: Upload
+        shell: bash
+        run: |
+          gh release upload ${{ github.ref_name }} ./sbom_kubearmor.spdx
