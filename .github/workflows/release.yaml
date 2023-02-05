@@ -16,20 +16,25 @@ jobs:
         uses: anchore/sbom-action@v0.12.0
         with:
           format: cyclonedx-json
-      # - name: Install Bom
-      #   shell: bash
-      #   run: |
-      #     curl -L https://github.com/kubernetes-sigs/bom/releases/download/v0.4.1/bom-linux-amd64 -o bom
-      #     sudo mv ./bom /usr/local/bin/bom
-      #     sudo chmod +x /usr/local/bin/bom
+      - name: Install Bom
+        shell: bash
+        run: |
+          curl -L https://github.com/kubernetes-sigs/bom/releases/download/v0.4.1/bom-linux-amd64 -o bom
+          sudo mv ./bom /usr/local/bin/bom
+          sudo chmod +x /usr/local/bin/bom
       
-      # - name: Generate SBOM
-      #   shell: bash
-      #   run: |
-      #     bom generate -o sbom_kubearmor.spdx --dirs=. 
+      - name: Generate SBOM
+        shell: bash
+        run: |
+          bom generate -o sbom_kubearmor.spdx --dirs=. 
+
+      - name: check for sbom file 
+        shell: bash
+        run: |
+          ls -al 
     
-      # - name: Upload the SBOM artifacets
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: my-artifact
-      #     path: ./sbom_kubearmor.spdx
+      - name: Upload the SBOM artifacets
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: ./sbom_kubearmor.spdx
